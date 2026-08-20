@@ -132,3 +132,59 @@ def search_prompt():
         print("검색 결과가 없습니다.")
     else:
         print(f"\n{count}개의 프롬프트를 찾았습니다.")
+
+        # 5. 프롬프트 상세 보기
+def show_detail():
+    print("\n=== 프롬프트 상세 보기 ===")
+    show_list()
+    num = input("\n번호 입력: ").strip()
+
+    if not (num.isdigit() and 1 <= int(num) <= len(prompts)):
+        print("잘못된 번호입니다.")
+        return
+
+    p = prompts[int(num) - 1]
+    star = "⭐" if p["favorite"] else "없음"
+    print("\n────────────────────────────")
+    print(f"제목: {p['title']}")
+    print(f"카테고리: {p['category']}")
+    print(f"즐겨찾기: {star}")
+    print("────────────────────────────")
+    print("내용:")
+    print(p["content"])
+    print("────────────────────────────")
+
+
+# 6. 즐겨찾기 관리 (추가/해제)
+def manage_favorite():
+    print("\n=== 즐겨찾기 관리 ===")
+    show_list()
+    num = input("\n프롬프트 번호 입력: ").strip()
+
+    if not (num.isdigit() and 1 <= int(num) <= len(prompts)):
+        print("잘못된 번호입니다.")
+        return
+
+    p = prompts[int(num) - 1]
+    # True면 False로, False면 True로 뒤집기
+    p["favorite"] = not p["favorite"]
+
+    if p["favorite"]:
+        print(f"'{p['title']}' 프롬프트를 즐겨찾기에 추가했습니다!")
+    else:
+        print(f"'{p['title']}' 프롬프트를 즐겨찾기에서 해제했습니다!")
+
+
+# 7. 즐겨찾기 목록
+def show_favorites():
+    print("\n=== 즐겨찾기 목록 ===")
+    count = 0
+    for p in prompts:
+        if p["favorite"]:
+            count += 1
+            print_one(count, p)
+
+    if count == 0:
+        print("즐겨찾기된 프롬프트가 없습니다.")
+    else:
+        print(f"\n총 {count}개의 즐겨찾기")
