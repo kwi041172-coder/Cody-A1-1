@@ -79,3 +79,13 @@ def add_prompt():
         "favorite": False
     })
     print("\n프롬프트가 추가되었습니다!")
+
+    # 2. 프롬프트 목록
+def show_list():
+    print("\n=== 프롬프트 목록 ===")
+    if len(prompts) == 0:
+        print("등록된 프롬프트가 없습니다.")
+        return
+    for i, p in enumerate(prompts, start=1):
+        print_one(i, p)
+    print(f"\n총 {len(prompts)}개의 프롬프트")
