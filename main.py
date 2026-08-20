@@ -43,3 +43,39 @@ def show_menu():
 def print_one(index, p):
     star = " ⭐" if p["favorite"] else ""
     print(f"{index}. [{p['category']}] {p['title']}{star}")
+
+    # 1. 프롬프트 추가
+def add_prompt():
+    print("\n=== 프롬프트 추가 ===")
+
+    # 제목이 빈칸이면 다시 입력받기
+    title = input("제목: ").strip()
+    while title == "":
+        print("제목은 비워둘 수 없습니다.")
+        title = input("제목: ").strip()
+
+    # 내용이 빈칸이면 다시 입력받기
+    content = input("내용: ").strip()
+    while content == "":
+        print("내용은 비워둘 수 없습니다.")
+        content = input("내용: ").strip()
+
+    # 카테고리 선택
+    print("\n카테고리 선택:")
+    for i, c in enumerate(CATEGORIES, start=1):
+        print(f"{i}) {c}")
+    choice = input("선택: ").strip()
+
+    if choice.isdigit() and 1 <= int(choice) <= len(CATEGORIES):
+        category = CATEGORIES[int(choice) - 1]
+    else:
+        category = "기타"  # 잘못 입력하면 기타로 처리
+
+    # 새 프롬프트를 딕셔너리로 만들어 리스트에 추가
+    prompts.append({
+        "title": title,
+        "content": content,
+        "category": category,
+        "favorite": False
+    })
+    print("\n프롬프트가 추가되었습니다!")
