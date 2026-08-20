@@ -38,3 +38,8 @@ def show_menu():
     print("6. 즐겨찾기 관리")
     print("7. 즐겨찾기 목록")
     print("0. 종료")
+
+    # 프롬프트 한 개를 "번호. [카테고리] 제목 ⭐" 형태로 출력하는 도우미 함수
+def print_one(index, p):
+    star = " ⭐" if p["favorite"] else ""
+    print(f"{index}. [{p['category']}] {p['title']}{star}")
