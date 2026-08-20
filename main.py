@@ -89,3 +89,28 @@ def show_list():
     for i, p in enumerate(prompts, start=1):
         print_one(i, p)
     print(f"\n총 {len(prompts)}개의 프롬프트")
+
+    # 3. 카테고리별 조회
+def show_by_category():
+    print("\n=== 카테고리별 조회 ===")
+    for i, c in enumerate(CATEGORIES, start=1):
+        print(f"{i}) {c}")
+    choice = input("선택: ").strip()
+
+    if not (choice.isdigit() and 1 <= int(choice) <= len(CATEGORIES)):
+        print("잘못된 선택입니다.")
+        return
+
+    category = CATEGORIES[int(choice) - 1]
+    print(f"\n[{category}] 카테고리 프롬프트:")
+
+    count = 0
+    for p in prompts:
+        if p["category"] == category:
+            count += 1
+            print_one(count, p)
+
+    if count == 0:
+        print("해당 카테고리에 프롬프트가 없습니다.")
+    else:
+        print(f"\n총 {count}개의 프롬프트")
