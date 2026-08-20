@@ -114,3 +114,21 @@ def show_by_category():
         print("해당 카테고리에 프롬프트가 없습니다.")
     else:
         print(f"\n총 {count}개의 프롬프트")
+
+        # 4. 프롬프트 검색
+def search_prompt():
+    print("\n=== 프롬프트 검색 ===")
+    keyword = input("검색어: ").strip()
+
+    print("\n검색 결과:")
+    count = 0
+    for p in prompts:
+        # 제목 또는 내용에 검색어가 들어있으면
+        if keyword in p["title"] or keyword in p["content"]:
+            count += 1
+            print_one(count, p)
+
+    if count == 0:
+        print("검색 결과가 없습니다.")
+    else:
+        print(f"\n{count}개의 프롬프트를 찾았습니다.")
