@@ -12,7 +12,7 @@ Python 기초 문법과 Git 버전 관리를 연습하기 위해 만들었습니
 
 ## ▶️ 실행 방법
 1. 저장소 내려받기
-   git clone [내 GitHub 저장소 주소를 여기에 붙여넣기]
+   git clone https://github.com/kwi041172-coder/Cody-A1-1.git
 2. 폴더 이동
    cd prompt-manager
 3. 프로그램 실행
