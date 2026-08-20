@@ -188,3 +188,36 @@ def show_favorites():
         print("즐겨찾기된 프롬프트가 없습니다.")
     else:
         print(f"\n총 {count}개의 즐겨찾기")
+
+        # ============================================
+# 프로그램 실행 (메인 반복문)
+# ============================================
+def main():
+    while True:
+        show_menu()
+        sel = input("선택: ").strip()
+
+        if sel == "1":
+            add_prompt()
+        elif sel == "2":
+            show_list()
+        elif sel == "3":
+            show_by_category()
+        elif sel == "4":
+            search_prompt()
+        elif sel == "5":
+            show_detail()
+        elif sel == "6":
+            manage_favorite()
+        elif sel == "7":
+            show_favorites()
+        elif sel == "0":
+            print("프로그램을 종료합니다. 안녕히 가세요!")
+            break
+        else:
+            print("잘못된 번호입니다. 다시 선택해주세요.")
+
+
+# 이 파일을 직접 실행할 때만 main() 실행
+if __name__ == "__main__":
+    main()
